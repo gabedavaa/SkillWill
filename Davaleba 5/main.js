@@ -60,7 +60,6 @@ const nextButton = document.getElementById("next-question");
 let currentQuestionIndex = -1;
 
 function displayQuestion(index) {
-  console.log(index);
   const randomQuestion = quizQuestions[index];
 
   const questionElement = document.createElement("p");
@@ -89,7 +88,7 @@ function displayQuestion(index) {
 
 function checkAnswer() {
   const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-  console.log(selectedAnswer);
+
   if (selectedAnswer) {
     const answer = selectedAnswer.value;
     const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
@@ -104,8 +103,6 @@ function checkAnswer() {
       checkButton.disabled = true; // Disable the selected answer
     } else {
       selectedAnswer.parentNode.style.color = "red";
-
-      // alert("Incorrect. The correct answer is: " + correctAnswer);
     }
   } else {
     alert("Please select an answer before checking.");
