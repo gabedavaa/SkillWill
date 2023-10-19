@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./main.js"></script>
+    <title>Davaleba 6</title>
+  </head>
+  <body>
+    <button id="btn-1" class="button">Open Modal</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span
+          style="float: right; cursor: pointer"
+          class="close"
+          id="close-modal"
+          >&times;</span
+        >
+        <p>This is the modal content.</p>
+      </div>
+    </div>
+
+    <!--  -->
+    <h1>Change Background Color</h1>
+    <form id="colorForm">
+      <label for="colorInput"
+        >Enter a color (red, blue, green, black, white):</label
+      >
+      <input type="text" id="colorInput" />
+      <button type="button" id="change-backgroundColor">
+        Change Background
+      </button>
+    </form>
+
+    <!--  -->
+    <div class="container">
+      <h1>Calculate Average of Numbers</h1>
+      <label for="numbers"
+        >Enter numbers separated by ':' (e.g., 1:2:3:4):</label
+      >
+      <input type="text" id="numbers" placeholder="1:2:3:4" />
+      <button id="average-btn">Calculate Average</button>
+      <p id="averageValue">Average: <span id="averageResult"></span></p>
+    </div>
+  </body>
+</html>

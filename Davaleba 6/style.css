@@ -1,0 +1,44 @@
+.button {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.close {
+  color: #333; /* Change the color of the close button */
+  float: right;
+  font-size: 28px;
+  font-weight: bold; /* Make the button text bold */
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000; /* Change the color when hovering over the close button */
+}
