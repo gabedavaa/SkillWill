@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import TodoItem from './TodoItem';  
+import React, { Component } from 'react';
+import TodoItem from './TodoItem';
 import '../styles/styles.css';
 
-class TodoList extends PureComponent  {
+class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,7 +61,7 @@ class TodoList extends PureComponent  {
   };
 
   render() {
-    console.log('todo list rerender')
+    console.log('todo list rerender');
 
     return (
       <div className="todo-list-container">
@@ -87,7 +87,7 @@ class TodoList extends PureComponent  {
                 id={task.id}
                 action={this.finishTask}
                 deleteTask={this.deleteTask}
-                actionName='finish'
+                actionName="finish"
                 isCompleted={false}
               />
             ))}
@@ -104,8 +104,8 @@ class TodoList extends PureComponent  {
                 id={task.id}
                 action={this.unfinishTask}
                 deleteTask={this.deleteTask}
-                actionName='unfinish'
-                isCompleted='true'
+                actionName="unfinish"
+                isCompleted={true}
               />
             ))}
           </ul>

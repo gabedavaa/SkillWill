@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
-const TodoItem = React.memo(({ text, id, action, deleteTask, actionName, isCompleted }) => {
-  
-  console.log('todo item rerender')
+class TodoItem extends PureComponent {
+  render() {
+    console.log('todo item rerender');
+
+    const { text, id, action, deleteTask, actionName, isCompleted } = this.props;
+
     return (
-    <li className="task-item">
-      {text}
-      <div>
-        <button onClick={() => action(id)}>{actionName}</button>
-        <button onClick={() => deleteTask(isCompleted, id)}>Delete</button>
-      </div>
-    </li>
-  );
-});
+      <li className="task-item">
+        {text}
+        <div>
+          <button onClick={() => action(id)}>{actionName}</button>
+          <button onClick={() => deleteTask(isCompleted, id)}>Delete</button>
+        </div>
+      </li>
+    );
+  }
+}
 
 export default TodoItem;
