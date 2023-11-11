@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TodoItem from './TodoItem';  // Assuming TodoItem is in the same directory
+import TodoItem from './TodoItem';  
 import '../styles/styles.css';
 
 class TodoList extends Component {
