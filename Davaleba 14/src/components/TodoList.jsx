@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import TodoItem from './TodoItem';
 import '../styles/styles.css';
 
@@ -6,6 +6,11 @@ const TodoList = () => {
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
+  const inputRef = useRef(null)
+
+useEffect(()=>{
+  inputRef.current.focus()
+},[])
 
   const handleChange = (event) => {
     setNewTask(event.target.value);
@@ -23,25 +28,33 @@ const TodoList = () => {
     }
   };
 
-  const finishTask = (id) => {
+  const finishTask = useCallback((id) => {
     const unfinishedTask = tasks.find((task) => task.id === id);
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
-    setCompletedTasks((prevCompletedTasks) => [...prevCompletedTasks, unfinishedTask]);
-  };
+  
+    if (unfinishedTask) {
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+      setCompletedTasks((prevCompletedTasks) => [...prevCompletedTasks, unfinishedTask]);
+    }
+  }, [tasks]);
+  
 
-  const unfinishTask = (id) => {
+  const unfinishTask = useCallback((id) => {
     const finishedTask = completedTasks.find((task) => task.id === id);
-    setCompletedTasks((prevCompletedTasks) => prevCompletedTasks.filter((task) => task.id !== id));
-    setTasks((prevTasks) => [...prevTasks, finishedTask]);
-  };
+  
+    if (finishedTask) {
+      setCompletedTasks((prevCompletedTasks) => prevCompletedTasks.filter((task) => task.id !== id));
+      setTasks((prevTasks) => [...prevTasks, finishedTask]);
+    }
+  }, [completedTasks]);
+  
 
-  const deleteTask = (isCompleted, id) => {
+  const deleteTask = useCallback((isCompleted, id) => {
     if (isCompleted) {
       setCompletedTasks((prevCompletedTasks) => prevCompletedTasks.filter((task) => task.id !== id));
     } else {
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
     }
-  };
+  },[]);
 
   console.log('todo list rerender');
 
@@ -50,7 +63,7 @@ const TodoList = () => {
       <h2>To-Do List</h2>
 
       <div className="input-container">
-        <input
+        <input ref={inputRef}
           type="text"
           value={newTask}
           onChange={handleChange}
