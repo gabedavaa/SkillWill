@@ -13,7 +13,6 @@ function App() {
     {device === 'MOBILE' ? (
       <>
         <h1>Hello, Mobile User!</h1>
-        {/* <button onClick={() => toggle(prev => !prev)}>Toggle Theme</button> */}
       </>
     ) : (
       <><div className={`fullscreen-${themeColor ? 'light' : 'dark'}`}>
