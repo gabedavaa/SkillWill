@@ -1,28 +1,19 @@
 import React from 'react';
-import './styles/styles.css'; 
-import useLocalStorage from './hooks/useLocalStorage';
-import useDetectDevice from './hooks/useDetectDevice';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import Fact from './components/Fact';
 
-function App() {
-  const [themeColor, toggle] = useLocalStorage('theme', true)
-  const device = useDetectDevice()
- console.log(device);
-
+const App = () => {
   return (
-    <div>
-    {device === 'MOBILE' ? (
-      <>
-        <h1>Hello, Mobile User!</h1>
-      </>
-    ) : (
-      <><div className={`fullscreen-${themeColor ? 'light' : 'dark'}`}>
-        <h1>Hello, Desktop User!</h1>
-        <button onClick={() => toggle(prev => !prev)}>Toggle Theme</button>
-        </div>   
-      </>
-    )}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/:factId" element={<Fact />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
